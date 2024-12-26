@@ -51,6 +51,20 @@
             margin-bottom: 15px;
             line-height: 1.6;
         }
+        .section-title {
+            font-size: 22px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: #333;
+        }
+        .hobby-list {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        .hobby-list li {
+            font-size: 18px;
+            margin-bottom: 8px;
+        }
     </style>
 </head>
 <body>
@@ -67,9 +81,26 @@
         <section class="hero">
             <div class="hero-content">
                 <h1>About Me</h1>
-                <p><strong>Experience:</strong> 2023 - Present Teacher | Teaching in a child school as a part-time tutor. Successfully teaching little students in “Ubai Ibne Kaab”.</p>
-                <p><strong>Hobbies:</strong> Travelling, Photography, Foodie, Trying new things.</p>
-                <p><strong>Passion:</strong> I am trying to be a model beside my studying. So currently, I am doing cosplay. For me, it's one of the beginner steps to get closer to my goals.</p>
+
+                <div class="experience">
+                    <p class="section-title">Experience:</p>
+                    <p>2023 - Present Teacher | Teaching in a child school as a part-time tutor. Successfully teaching little students in “Ubai Ibne Kaab”.</p>
+                </div>
+
+                <div class="hobbies">
+                    <p class="section-title">Hobbies:</p>
+                    <ul class="hobby-list">
+                        <li>Travelling</li>
+                        <li>Photography</li>
+                        <li>Foodie</li>
+                        <li>Trying new things</li>
+                    </ul>
+                </div>
+
+                <div class="passion">
+                    <p class="section-title">Passion:</p>
+                    <p>I am trying to be a model beside my studying. So currently, I am doing cosplay. For me, it's one of the beginner steps to get closer to my goals.</p>
+                </div>
             </div>
         </section>
     </main>
