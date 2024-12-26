@@ -6,64 +6,154 @@
     <title>About Me - Abdus Salam Mahmood Tonmoy</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
+        /* Global Styles */
         body {
             font-family: 'Poppins', sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f4f4f4;
+            color: #333;
+            background-color: #f8f9fa;
         }
+
         header {
-            background-color: #333;
-            padding: 10px 0;
+            background: linear-gradient(90deg, #007bff, #0056b3);
+            padding: 1em 0;
             text-align: center;
         }
+
         header nav ul {
             list-style: none;
             padding: 0;
         }
+
         header nav ul li {
-            display: inline;
+            display: inline-block;
             margin: 0 15px;
         }
+
         header nav ul li a {
-            color: white;
+            color: #fff;
             text-decoration: none;
             font-weight: 600;
+            font-size: 1rem;
+            transition: color 0.3s ease;
         }
-        main {
-            padding: 20px;
-            max-width: 800px;
-            margin: 0 auto;
+
+        header nav ul li a:hover {
+            color: #ffcc00;
         }
+
+        /* Hero Section */
         .hero {
-            background-color: white;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            padding: 30px;
+            text-align: center;
+            padding: 60px 20px;
+            background: linear-gradient(135deg, #f4f4f4, #ffffff);
+            position: relative;
         }
-        .hero h1 {
-            font-size: 36px;
-            font-weight: 700;
-            margin-bottom: 20px;
+
+        .hero-content {
+            max-width: 700px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+            color: #333;
         }
-        .hero p {
-            font-size: 18px;
+
+        .hero-content h1 {
+            font-size: 2.8rem;
             margin-bottom: 15px;
+            font-weight: 700;
+            color: #007bff;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
             line-height: 1.6;
         }
+
+        .hero-content strong {
+            color: #0056b3;
+            font-weight: 600;
+        }
+
+        .hero-content .btn {
+            background: #007bff;
+            color: #fff;
+            padding: 12px 25px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 600;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            transition: background 0.3s ease, transform 0.2s ease;
+        }
+
+        .hero-content .btn:hover {
+            background: #0056b3;
+            transform: translateY(-5px);
+        }
+
+        /* Profile Picture Styling */
+        .profile-picture {
+            width: 180px;
+            height: 180px;
+            margin: 0 auto 20px;
+            border-radius: 50%;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .profile-picture img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Social Links */
+        .social-links {
+            margin-top: 25px;
+        }
+
+        .social-links a {
+            margin: 0 15px;
+            color: #007bff;
+            font-size: 2rem;
+            transition: color 0.3s ease, transform 0.2s ease;
+        }
+
+        .social-links a:hover {
+            color: #0056b3;
+            transform: scale(1.1);
+        }
+
+        /* Animation */
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        /* Additional Styles */
+        .hobby-list {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        .hobby-list li {
+            font-size: 18px;
+            margin-bottom: 8px;
+        }
+
         .section-title {
             font-size: 22px;
             font-weight: 600;
             margin-bottom: 10px;
             color: #333;
-        }
-        .hobby-list {
-            list-style-type: none;
-            padding-left: 0;
-        }
-        .hobby-list li {
-            font-size: 18px;
-            margin-bottom: 8px;
         }
     </style>
 </head>
@@ -84,7 +174,7 @@
 
                 <div class="experience">
                     <p class="section-title">Experience:</p>
-                    <p>2023 - Present Teaching in a child school as a part-time tutor. Successfully teaching little students in “Ubai Ibne Kaab”.</p>
+                    <p>2023 - Present: Teaching in a child school as a part-time tutor. Successfully teaching little students in “Ubai Ibne Kaab”.</p>
                 </div>
 
                 <div class="hobbies">
