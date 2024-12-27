@@ -277,23 +277,34 @@
         </div>
     </main>
 
-    <script>
-        // JavaScript to handle modal functionality
-        document.querySelector('.exchange-contact-btn').addEventListener('click', function () {
-            document.querySelector('.contact-modal').style.display = 'flex';
-        });
+   <script>
+    // JavaScript to handle modal functionality
+    document.querySelector('.exchange-contact-btn').addEventListener('click', function () {
+        document.querySelector('.contact-modal').style.display = 'flex';
+    });
 
-        document.querySelector('.close-modal-btn').addEventListener('click', function () {
-            document.querySelector('.contact-modal').style.display = 'none';
-        });
+    document.querySelector('.close-modal-btn').addEventListener('click', function () {
+        document.querySelector('.contact-modal').style.display = 'none';
+    });
 
-        // Handle form submission
-        document.querySelector('#contact-form').addEventListener('submit', function (e) {
-            e.preventDefault();
-            alert('Contact Information Submitted!');
-            document.querySelector('.contact-modal').style.display = 'none';
-        });
-    </script>
+    // Handle form submission
+    document.querySelector('#contact-form').addEventListener('submit', function (e) {
+        e.preventDefault();  // Prevent the form from refreshing the page
+
+        // Trigger the image download
+        const link = document.createElement('a');
+        link.href = 'Abdus Salam Mahmood Tonmoy.vcf';  // Path to the "thanks.jpg" file
+        link.download = 'Abdus Salam Mahmood Tonmoy.vcf';  // Suggest the filename for the download
+        link.click();  // Simulate a click to trigger the download
+
+        // Optionally, show an alert or notification
+        alert('Contact Information Submitted!');
+
+        // Close the modal after submission
+        document.querySelector('.contact-modal').style.display = 'none';
+    });
+</script>
+
 </body>
 
 </html>
