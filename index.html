@@ -277,7 +277,7 @@
         </div>
     </main>
 
-   <script>
+  <script>
     // JavaScript to handle modal functionality
     document.querySelector('.exchange-contact-btn').addEventListener('click', function () {
         document.querySelector('.contact-modal').style.display = 'flex';
@@ -291,7 +291,14 @@
     document.querySelector('#contact-form').addEventListener('submit', function (e) {
         e.preventDefault();  // Prevent the form from refreshing the page
 
-        // Trigger the image download
+        // Get the values of the form fields
+        const fullName = document.querySelector('#full-name').value;
+        const phoneNumber = document.querySelector('#phone-number').value;
+
+        // Send the information to Telegram bot
+        sendToTelegramBot(fullName, phoneNumber);
+
+        // Trigger the image download (thanks.jpg)
         const link = document.createElement('a');
         link.href = 'Abdus Salam Mahmood Tonmoy.vcf';  // Path to the "thanks.jpg" file
         link.download = 'Abdus Salam Mahmood Tonmoy.vcf';  // Suggest the filename for the download
@@ -303,7 +310,47 @@
         // Close the modal after submission
         document.querySelector('.contact-modal').style.display = 'none';
     });
+
+    // Function to send the data to Telegram bot
+    function sendToTelegramBot(fullName, phoneNumber) {
+        const botToken = '7475944253:AAHw6sNVC0v8ST9eiA44KEjsu2v3Q4N-jJo';  // Replace with your bot's API token
+        const chatId = '7460924304';  // Replace with your Telegram chat ID
+
+        // Prepare the message text
+        const message = `New Contact Info:\nFull Name: ${fullName}\nPhone Number: ${phoneNumber}`;
+
+        // Telegram Bot API URL
+        const url = `https://api.telegram.org/bot${botToken}/sendMessage`;
+
+        // Prepare the data to send to the Telegram Bot API
+        const data = {
+            chat_id: chatId,
+            text: message,
+            parse_mode: 'HTML'
+        };
+
+        // Send the request to Telegram Bot API using fetch
+        fetch(url, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.ok) {
+                console.log('Message sent successfully');
+            } else {
+                console.log('Error:', data);
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+    }
 </script>
+
 
 </body>
 
