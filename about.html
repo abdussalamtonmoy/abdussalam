@@ -138,7 +138,66 @@
             }
         }
 
-        /* Additional Styles */
+        /* Gallery and Slider Styles */
+        .gallery-section {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .gallery-section .section-title {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: #007bff;
+        }
+
+        /* Slider Container */
+        .slider-container {
+            position: relative;
+            width: 80%;
+            margin: 0 auto;
+            max-width: 1000px;
+            overflow: hidden;
+            border-radius: 10px;
+        }
+
+        .slider {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .slider img {
+            width: 100%;
+            height: 400px;  /* Set fixed height for the images */
+            object-fit: cover;
+            border-radius: 10px;
+        }
+
+        /* Slider Navigation */
+        .slider-nav {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            transform: translateY(-50%);
+        }
+
+        .slider-nav button {
+            background: rgba(0, 0, 0, 0.5);
+            color: #fff;
+            border: none;
+            padding: 10px;
+            font-size: 20px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .slider-nav button:hover {
+            background: rgba(0, 0, 0, 0.8);
+        }
+
+        /* Hobbies List */
         .hobby-list {
             list-style-type: none;
             padding-left: 0;
@@ -149,12 +208,12 @@
             margin-bottom: 8px;
         }
 
-        .section-title {
-            font-size: 22px;
-            font-weight: 600;
-            margin-bottom: 10px;
-            color: #333;
+        /* Passion Section (Text positioning) */
+        .passion {
+            margin-top: 30px;
+            padding-bottom: 20px;
         }
+
     </style>
 </head>
 <body>
@@ -167,6 +226,7 @@
             </ul>
         </nav>
     </header>
+
     <main>
         <section class="hero">
             <div class="hero-content">
@@ -187,12 +247,66 @@
                     </ul>
                 </div>
 
+                <!-- Passion Section moved closer to the gallery -->
                 <div class="passion">
                     <p class="section-title">Passion:</p>
                     <p>I am trying to be a model beside my studying. So currently, I am doing cosplay. For me, it's one of the beginner steps to get closer to my goals.</p>
                 </div>
             </div>
         </section>
+
+        <!-- Gallery Section -->
+        <section class="gallery-section">
+            <h2 class="section-title">Gallery</h2>
+            <div class="slider-container">
+                <div class="slider">
+                    <img src="https://abdussalamtonmoy.github.io/99b35945-83ec-4c25-b24f-ac13e24ed0d2.png" alt="Image 1">
+                    <img src="https://abdussalamtonmoy.github.io/54fcc9aa-de34-40ef-8a48-e5d24c3ed72a.png" alt="Image 2">
+                    <img src="https://abdussalamtonmoy.github.io/17d768dc-0371-4dae-9aa6-2f709f0e9ee6.png" alt="Image 3">
+                    <img src="https://abdussalamtonmoy.github.io/54a5a0e4-6a70-4477-a675-45efee3db42a.png" alt="Image 4">
+                </div>
+                <div class="slider-nav">
+                    <button id="prev-btn">&#10094;</button>
+                    <button id="next-btn">&#10095;</button>
+                </div>
+            </div>
+        </section>
     </main>
+
+    <script>
+        const slider = document.querySelector('.slider');
+        const nextBtn = document.getElementById('next-btn');
+        const prevBtn = document.getElementById('prev-btn');
+        let index = 0;
+
+        const updateSlider = () => {
+            const totalImages = slider.children.length;
+            const width = slider.clientWidth;
+            slider.style.transform = `translateX(-${index * width}px)`;
+        };
+
+        nextBtn.addEventListener('click', () => {
+            const totalImages = slider.children.length;
+            index = (index + 1) % totalImages; 
+            updateSlider();
+        });
+
+        prevBtn.addEventListener('click', () => {
+            const totalImages = slider.children.length;
+            index = (index - 1 + totalImages) % totalImages;
+            updateSlider();
+        });
+
+        // Auto-slide
+        setInterval(() => {
+            const totalImages = slider.children.length;
+            index = (index + 1) % totalImages;
+            updateSlider();
+        }, 3000); // change image every 3 seconds
+
+        window.addEventListener('resize', updateSlider);
+
+        updateSlider();
+    </script>
 </body>
 </html>
