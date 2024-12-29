@@ -227,6 +227,14 @@
                 opacity: 1;
             }
         }
+
+        /* Blocked User Styles */
+        .blocked {
+            text-align: center;
+            font-size: 1.5rem;
+            color: red;
+            margin-top: 50px;
+        }
     </style>
 </head>
 
@@ -262,6 +270,11 @@
             </div>
         </section>
 
+        <!-- Blocked Message -->
+        <div class="blocked" id="blocked-message" style="display: none;">
+            <p>You are blocked from submitting the form. Please contact support for further assistance.</p>
+        </div>
+
         <!-- Modal for Exchange Contact -->
         <div class="contact-modal">
             <div class="modal-content">
@@ -278,40 +291,60 @@
     </main>
 
   <script>
-    // JavaScript to handle modal functionality
+    let submissionCount = 0;
+    const maxSubmissions = 2;
+    const contactModal = document.querySelector('.contact-modal');
+    const blockedMessage = document.getElementById('blocked-message');
+
+    // Handle the modal open action
     document.querySelector('.exchange-contact-btn').addEventListener('click', function () {
-        document.querySelector('.contact-modal').style.display = 'flex';
+        if (submissionCount >= maxSubmissions) {
+            blockedMessage.style.display = 'block';  // Show blocked message
+            contactModal.style.display = 'none';  // Hide the modal if blocked
+        } else {
+            contactModal.style.display = 'flex';
+        }
     });
 
+    // Close modal action
     document.querySelector('.close-modal-btn').addEventListener('click', function () {
-        document.querySelector('.contact-modal').style.display = 'none';
+        contactModal.style.display = 'none';
     });
 
     // Handle form submission
     document.querySelector('#contact-form').addEventListener('submit', function (e) {
         e.preventDefault();  // Prevent the form from refreshing the page
 
-        // Get the values of the form fields
+        if (submissionCount >= maxSubmissions) {
+            blockedMessage.style.display = 'block';  // Show blocked message
+            contactModal.style.display = 'none';  // Close the modal
+            return;
+        }
+
+        // Get form data
         const fullName = document.querySelector('#full-name').value;
         const phoneNumber = document.querySelector('#phone-number').value;
 
-        // Send the information to Telegram bot
+        // Send data to Telegram Bot
         sendToTelegramBot(fullName, phoneNumber);
+
+        // Increment the submission count
+        submissionCount++;
+
+        // Close the modal after submission
+        contactModal.style.display = 'none';
+
+        // Optionally, show a thank you message
+        alert('Contact Information Submitted!');
 
         // Trigger the image download (thanks.jpg)
         const link = document.createElement('a');
         link.href = 'Abdus Salam Mahmood Tonmoy.vcf';  // Path to the "thanks.jpg" file
         link.download = 'Abdus Salam Mahmood Tonmoy.vcf';  // Suggest the filename for the download
         link.click();  // Simulate a click to trigger the download
-
-        // Optionally, show an alert or notification
-        alert('Contact Information Submitted!');
-
-        // Close the modal after submission
-        document.querySelector('.contact-modal').style.display = 'none';
     });
 
-    // Function to send the data to Telegram bot
+    // Send data to Telegram bot
     function sendToTelegramBot(fullName, phoneNumber) {
         const botToken = '8003330617:AAGalw4s5uXRtLCUAxxRDptqs1w6l1qPEe0';  // Replace with your bot's API token
         const chatId = '5053050750';  // Replace with your Telegram chat ID
