@@ -94,12 +94,10 @@
             transform: translateY(-5px);
         }
 
-        /* Gallery Section */
+        /* Gallery and Slider Styles */
         .gallery-section {
             text-align: center;
             margin-top: 20px;
-            width: 100%;
-            overflow: hidden;
         }
 
         .gallery-section .section-title {
@@ -112,12 +110,11 @@
         /* Slider Container */
         .slider-container {
             position: relative;
-            width: 80%;
+            width: 100%;
             margin: 0 auto;
             max-width: 1000px;
             overflow: hidden;
             border-radius: 10px;
-            height: 500px; /* Adjust to your preferred gallery height */
         }
 
         .slider {
@@ -126,11 +123,11 @@
         }
 
         .slider img {
-            width: 100%;            /* Ensure the images take full width */
-            height: 100%;           /* Ensure the images take full height */
-            object-fit: cover;      /* Cover the container without stretching */
-            border-radius: 10px;    /* Rounded corners */
-            display: block;         /* Make sure images don't get unwanted spacing */
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+            border-radius: 15px;  /* Adjusted border-radius for rounded corners */
+            display: block; /* Ensuring images are displayed */
         }
 
         /* Slider Navigation */
