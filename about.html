@@ -94,50 +94,6 @@
             transform: translateY(-5px);
         }
 
-        /* Profile Picture Styling */
-        .profile-picture {
-            width: 180px;
-            height: 180px;
-            margin: 0 auto 20px;
-            border-radius: 50%;
-            overflow: hidden;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
-            animation: float 3s ease-in-out infinite;
-        }
-
-        .profile-picture img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        /* Social Links */
-        .social-links {
-            margin-top: 25px;
-        }
-
-        .social-links a {
-            margin: 0 15px;
-            color: #007bff;
-            font-size: 2rem;
-            transition: color 0.3s ease, transform 0.2s ease;
-        }
-
-        .social-links a:hover {
-            color: #0056b3;
-            transform: scale(1.1);
-        }
-
-        /* Animation */
-        @keyframes float {
-            0%, 100% {
-                transform: translateY(0);
-            }
-            50% {
-                transform: translateY(-10px);
-            }
-        }
-
         /* Gallery and Slider Styles */
         .gallery-section {
             text-align: center;
@@ -154,7 +110,7 @@
         /* Slider Container */
         .slider-container {
             position: relative;
-            width: 80%;
+            width: 100%;
             margin: 0 auto;
             max-width: 1000px;
             overflow: hidden;
@@ -163,14 +119,15 @@
 
         .slider {
             display: flex;
-            transition: transform 0.5s ease-in-out;
+            transition: transform 1s ease-in-out;
         }
 
         .slider img {
             width: 100%;
-            height: 400px;  /* Set fixed height for the images */
+            height: auto;
             object-fit: cover;
-            border-radius: 10px;
+            border-radius: 15px;  /* Adjusted border-radius for rounded corners */
+            display: block; /* Ensuring images are displayed */
         }
 
         /* Slider Navigation */
@@ -181,6 +138,7 @@
             display: flex;
             justify-content: space-between;
             transform: translateY(-50%);
+            z-index: 10;
         }
 
         .slider-nav button {
@@ -275,37 +233,40 @@
 
     <script>
         const slider = document.querySelector('.slider');
+        const images = document.querySelectorAll('.slider img');
         const nextBtn = document.getElementById('next-btn');
         const prevBtn = document.getElementById('prev-btn');
         let index = 0;
 
+        // Function to update the slider
         const updateSlider = () => {
-            const totalImages = slider.children.length;
-            const width = slider.clientWidth;
-            slider.style.transform = `translateX(-${index * width}px)`;
+            // Hide all images
+            images.forEach(img => {
+                img.style.display = 'none';
+            });
+            // Show the current image
+            images[index].style.display = 'block';
         };
 
+        // Next button functionality
         nextBtn.addEventListener('click', () => {
-            const totalImages = slider.children.length;
-            index = (index + 1) % totalImages; 
+            index = (index + 1) % images.length;
             updateSlider();
         });
 
+        // Previous button functionality
         prevBtn.addEventListener('click', () => {
-            const totalImages = slider.children.length;
-            index = (index - 1 + totalImages) % totalImages;
+            index = (index - 1 + images.length) % images.length;
             updateSlider();
         });
 
-        // Auto-slide
+        // Auto-slide every 3 seconds
         setInterval(() => {
-            const totalImages = slider.children.length;
-            index = (index + 1) % totalImages;
+            index = (index + 1) % images.length;
             updateSlider();
-        }, 3000); // change image every 3 seconds
+        }, 3000);
 
-        window.addEventListener('resize', updateSlider);
-
+        // Initial call to display the first image
         updateSlider();
     </script>
 </body>
