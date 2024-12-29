@@ -94,10 +94,12 @@
             transform: translateY(-5px);
         }
 
-        /* Gallery and Slider Styles */
+        /* Gallery Section */
         .gallery-section {
             text-align: center;
             margin-top: 20px;
+            width: 100%;
+            overflow: hidden;
         }
 
         .gallery-section .section-title {
@@ -115,7 +117,7 @@
             max-width: 1000px;
             overflow: hidden;
             border-radius: 10px;
-            height: 300px; /* Control the height of the gallery container */
+            height: 500px; /* Adjust to your preferred gallery height */
         }
 
         .slider {
@@ -124,11 +126,11 @@
         }
 
         .slider img {
-            width: 100%;            /* Make images responsive */
-            height: auto;           /* Maintain aspect ratio */
-            object-fit: cover;      /* Maintain aspect ratio */
-            border-radius: 15px;    /* Rounded corners */
-            display: block;         /* Ensure images are displayed */
+            width: 100%;            /* Ensure the images take full width */
+            height: 100%;           /* Ensure the images take full height */
+            object-fit: cover;      /* Cover the container without stretching */
+            border-radius: 10px;    /* Rounded corners */
+            display: block;         /* Make sure images don't get unwanted spacing */
         }
 
         /* Slider Navigation */
