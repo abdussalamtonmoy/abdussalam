@@ -110,11 +110,12 @@
         /* Slider Container */
         .slider-container {
             position: relative;
-            width: 100%;
+            width: 80%;
             margin: 0 auto;
             max-width: 1000px;
             overflow: hidden;
             border-radius: 10px;
+            height: 300px; /* Control the height of the gallery container */
         }
 
         .slider {
@@ -123,11 +124,11 @@
         }
 
         .slider img {
-            width: 100%;
-            height: auto;
-            object-fit: cover;
-            border-radius: 15px;  /* Adjusted border-radius for rounded corners */
-            display: block; /* Ensuring images are displayed */
+            width: 100%;            /* Make images responsive */
+            height: auto;           /* Maintain aspect ratio */
+            object-fit: cover;      /* Maintain aspect ratio */
+            border-radius: 15px;    /* Rounded corners */
+            display: block;         /* Ensure images are displayed */
         }
 
         /* Slider Navigation */
